@@ -1,2 +1,2 @@
-# unit-3
+# Python
 Repo for unit 3
