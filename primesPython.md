@@ -96,4 +96,20 @@ for i in range(3, 1 + max_divsor, 2):
 ```
 As you can see in this line, there is a slight difference in the numbers of the range. First of all, the first divisor would be 3, because, the calculation is only for odd numbers, and since we already know that odd numbers are non-divisble by 2, we don't have to check that. `1 + max_divisor` is the same as version 2. This takes in account of the sqrt(n), and lastly, the interval of the range is set to 2. Basically what this means is that the odd number would only be divided by 3, 5, 7, 9, which makes sense, because if the interval was one, the computer would also have to calculate 4, 6, 8, and so on, which are all divisble by 2. And we know that odd numbers are never divisble by even numbers. This code is being as efficient as possible, eliminating the smallest unnecessary steps, to achieve the goal of finding prime numbers.
 
+### Import time 
+
+All of the versions created have a different execution speed, with the version 3 being fastest and 1 being the slowest. This is due to the algorithm. In version 1, the code ran a for loop for every divisor from 2 to the number itself, therefore took long to finish execution. From then, version 2 and verion 3 were significantly improved, because of the for loop that ran from 2 to sqrt(n). There are less procedures, thus takes shorter for the code to be executed. Version 3 was even more faster than version 2, since there were less calculation involved, and instead, it directly returns false for even numbers. 
+``` 
+import time 
+
+// is_prime functions 
+
+t0 = time.time()
+for n in range(1, 100000):
+    is_prime_v3(n)
+t1 = time.time()
+print("Time required: ", t1 - t0)
+``` 
+This is the code for checking the time. By running we can assess the time efficiency of the function, as well as the whole code, to check which code is the most efficient.
+
 
