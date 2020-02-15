@@ -6,3 +6,19 @@ We started unit 3 in this class. In unit 3, we will be using python as our prima
 ### Class 2 (2020/02/05)
 
 Today we started off by checking the weekend task. Then we learned about CTS, or computational thinking skills. This skill has four steps, according to the video we watched today: 1. Decomposition 2. Pattern recognition 3. Abstraction 4. Algorithmic thining. In the first step, we  break the question into smaller questions, smaller steps. And then we deduce a pattern in the problem. For example, one can guess how the question can be solved, because of similar questions being asked in the past. This is pattern recognition. Then third, abstraction is about only focusing on the things that actually matter. Finally you deduce the steps to achieve the goal you want. This whole process is called the computational thining skill. After learning this, by using the skill, we developed a program in python with the prompt "From the 10 integers input by the user, find the largest prime factor". By using the computational thinking skill, we broke down the question, and looked at the problem step by step. Then after we have done that, we started a new task of creating inventory. I would need to create an inventory list for Lauricenia's book, and will be working on that nest class.
+
+
+### Class 3 (2020/02/11)
+
+In this class we did a socratic circle to further understand what our clients wants, as well as clarifying the developer with our needs. We were also introduced to a new way of recording the process of the development of the program, which was by using a table to record everything we did. We categorized the table into 4 sections, planning, design, development, evaluation, and we practiced how IA requires us to document our process of development.
+
+### Class 4 (2020/02/12)
+
+In this class we did a lot of coding practice. For the first warm up, we created a program that calculates the speed of Bolt and Cheetah, from the 4 user inputs. This was not bad, because it was the only calculation part that I had to think about, but the rest of the code was easy for me to understand. Then after the first warmup we were given a paper with random amount of wages written, and the purpose was to "Create a system where the average can be calculated without anyone knowing the perosnal wages of others." The idea was that the teacher would generate a random number and we add our wages one by one, and then finally subtracting the result from the random number, and then dividing it by the number of students. This worked successfully, and then we shifted the topic to talk about secure login system. The code included a lot of new commands and syntaxes, although the concept was understandable. Although I have one question and I would like to know more about the import os and what it does. I also would like to practice more of creating a secure login system or something close to that, so that I can become familiar with the new functions. 
+
+### Class 5 (2020/02/14)
+
+This class was dedicated to string practice. We learned how to manipulate the strings using different commands. We used the google docs uploaded on google classroom to practice them, as well as the online textbook of python. In this lesson, we learned how to split the text into words, searching for words in the test to see if the word is included or not, using f string, counting the letters, makeing the text into lowercase, join method, and finally calculating the total sum of the ascii codes of the letters. It required us to remember a lot of new functions and commands. I have one question about the lambda function. I still don't quite understand how lambda function works in python. I think I need to look into that deeper outside of class time. Also I feel like I also need to get used to pythonic way of coding, since python, can make the code more line efficient, and more easy to read, once you understand them. 
+
+
+
