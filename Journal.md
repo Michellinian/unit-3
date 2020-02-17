@@ -20,5 +20,9 @@ In this class we did a lot of coding practice. For the first warm up, we created
 
 This class was dedicated to string practice. We learned how to manipulate the strings using different commands. We used the google docs uploaded on google classroom to practice them, as well as the online textbook of python. In this lesson, we learned how to split the text into words, searching for words in the test to see if the word is included or not, using f string, counting the letters, makeing the text into lowercase, join method, and finally calculating the total sum of the ascii codes of the letters. It required us to remember a lot of new functions and commands. I have one question about the lambda function. I still don't quite understand how lambda function works in python. I think I need to look into that deeper outside of class time. Also I feel like I also need to get used to pythonic way of coding, since python, can make the code more line efficient, and more easy to read, once you understand them. 
 
+### Class 6 (2020/02/17)
+
+Today we mainly worked on our repo for the entire class. First we did a warm up of writing codes on the white board, of a specific program. Then we did a kahoot for the names of computer parts. I remember making a mistake with the question with the answer "Motherboard". Now that I know that motherboard is the main circuit board, and the biggest structure in the computer, I will not forget it. Then the rest of class was dedicated to filling up criteria A of our inventory project. We did a second interview to our clients, and we had to record them so that we can show evidences to the evaluator. Then, after we got all the information during the interview, we started answering questions for criteria A. For today's class we were mainly working on the repo so I did not have any particular questions.
+
 
 
