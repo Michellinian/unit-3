@@ -160,5 +160,9 @@ plt.show()
 
 The steps are fundamentally the same as the third question, although for this graph, I didn't set the intervals to 0.1 and just left as default. This program also produces an interesting graph, that would also be able in the resourcePyplot folder.
 
+### Citation 
+
+[1] "How to Generate Random Numbers in Python", Machine Learning Mastery, 8 Aug. 2019, https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/ Accessed 18 Feb. 2019
+
 
 
