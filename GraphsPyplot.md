@@ -30,9 +30,7 @@ plt.ylabel('y')
 # show the graph
 plt.show()
 ```
-I had some difficulties while developing this program. First of all, I had difficulties importing matplotlib, since I did not have it in first place. I tried isntalling through terminal although this didn't also work, so I decided to intall the matplotlib in the pycharm. Also when setting the y values of the graph, it values had to be in a list, therefore I used `from numpy.random import randint` so that when generating random number, it automatically put every value generated inside a list. I got this code from Machine Learning Mastery[1]. There are also different ways of adding values in the list such as appending all the 1000 values into a list, although this looked shorter, therefore I used this code. This is the final product I got from this code: 
-
-![plotGraph](randGraph.png)
+I had some difficulties while developing this program. First of all, I had difficulties importing matplotlib, since I did not have it in first place. I tried isntalling through terminal although this didn't also work, so I decided to intall the matplotlib in the pycharm. Also when setting the y values of the graph, it values had to be in a list, therefore I used `from numpy.random import randint` so that when generating random number, it automatically put every value generated inside a list. I got this code from Machine Learning Mastery[1]. There are also different ways of adding values in the list such as appending all the 1000 values into a list, although this looked shorter, therefore I used this code. The final graph I got can be found in [resourcePyplot](#resourcePyplot).
 
 ### 2. Calculate the average of the 1000 random numbers in ① using a loop.
 
