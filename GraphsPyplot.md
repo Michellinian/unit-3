@@ -99,6 +99,66 @@ The average of all the random numbers generated: 50.485
 
 ### 3. Graph the equation for the wave function 14*sin(0.5*x) in the range x = [-10, 10] with steps of 0.1.
 
+1. import matplotlib
+2. define max and min for the x value 
+3. create list for x and y 
+4. append value (min + 0.1(i + 1)) to set the intervals for x to 0.1
+5. append value (14*sin(0.5*x)) for y 
+6. give x and y axes titles
+7. show graph 
+
+``` 
+# ③ 　Graph the equation for the wave function 14*sin(0.5*x) in the range x = [-10, 10] with steps of 0.1.
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+# create the value for the x variable from 1 to 1000
+max = 10
+min = -10
+# x = [i for i in range(min, max)]
+# # do the same for y but with the random numbers generated
+# y = [14 * math.sin(0.5*i) for i in x]
+x = []
+y = []
+# setting the intervals to 0.1
+for i in range(200):
+    x.append(min + 0.1*(i+1))
+    y.append(14 * math.sin(0.5 * x[i]))
+
+# create graph
+plt.plot(x, y)
+# title for the axis
+plt.xlabel('x')
+plt.ylabel('y')
+# show the graph
+plt.show()
+```
+
+For the for loop the range 200 was calculated by ((max - min) / 0.1). This equation calculates how many intervals there would be if the numbers were to have a 0.1 increment. In this specific case the maximum and minimum is 10 and -10, thus the calculation would be (10 + 10) / 0.1 = 20 / 0.1 = 200. The rest of the code is basically the same as the first question. The output of this program is also recorded in the resourcePyplot folder in the repo. 
+
 ### 4. Create the graph on any other mathematical function you know. 
+```
+# Creating tan graph
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+# set x value range
+x = [i for i in range(-10, 10)]
+# set y
+y = [math.tan(0.5*i) for i in x]
+
+# create graph
+plt.plot(x, y)
+# title for the axis
+plt.xlabel('x')
+plt.ylabel('y')
+# show the graph
+plt.show()
+```
+
+The steps are fundamentally the same as the third question, although for this graph, I didn't set the intervals to 0.1 and just left as default. This program also produces an interesting graph, that would also be able in the resourcePyplot folder.
+
 
 
