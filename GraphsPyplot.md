@@ -160,6 +160,42 @@ plt.show()
 
 The steps are fundamentally the same as the third question, although for this graph, I didn't set the intervals to 0.1 and just left as default. This program also produces an interesting graph, that would also be able in the resourcePyplot folder.
 
+### 5. f(x) = (x+1)^2 - 1, with x from -2, to 2 with 1000 points
+
+```
+import matplotlib.pyplot as plt
+x = []
+y = []
+for i in range(1000):
+    x.append(-2 + 0.004*i)
+    y.append((x[i]+1)**2 - 1)
+
+plt.plot(x, y)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.scatter(x, y)
+plt.show()
+```
+The different thing in this program is that instead of creating a line graph, it shows a dot graph. 1000 dots needs to be placed in the graph accrordingly to the functions in the instrcutions. Hence the graph looks like thick line, because the x range is only from -2 to 2, therefore it is like a thick line. The range of for loop 1000 indicated the number of dots, and the 0.04 in `x.append(-2 + 0.004 * i)`, is the interval of x, determined by the calculation of interval using the information of how many number are between -2 to 2. 
+
+### 6. [HL] g(a) = 0.1*sin(0.1*m(a)), where m(a) = a^2, and a from 0 to 30 with steps of 0.05
+```
+import matplotlib.pyplot as plt
+import math
+a = []
+b = []
+for i in range(600):
+    a.append(0 + 0.05 * i)
+    b.append(0.1*math.sin(0.1*(a[i]**2)))
+
+plt.plot(a, b)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+```
+The graph is in the resource folder in the repo. All the numbers of intervals and for loop range, were determined using the same method as previous.
+
+
 ### Citation 
 
 [1] "How to Generate Random Numbers in Python", Machine Learning Mastery, 8 Aug. 2019, https://machinelearningmastery.com/how-to-generate-random-numbers-in-python/ Accessed 18 Feb. 2019
