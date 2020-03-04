@@ -81,6 +81,8 @@ The steps are the following:
 
 All of the action codes are located inside the infinite loop and this loop allows the code to run infinite times until Thor reaches the goal.
 
+### Comment 
+
 At first the programming was a little confusing because the output was in the game, and so I didn't know how to code, although I gradually got the idea. For the second code I looked fully at the solution. I had the idea of first putting all the inputs in the array, and then finding the max value by using the syntax `max(list)`. Although for some reason, it seemed to not work, thus I ended up using the suggested code found in the solution. I don't quite understand how `if mountain_h > max`, determines the maximum of the mountain_h. For the other code, I understood fully what was going on, and for the last code, after I did several rounds and still didn't work, I peeked at the solution to get a general idea of what the algorithm, or the procedures are, and then finished up the code.
 
 
