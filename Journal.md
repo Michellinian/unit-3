@@ -40,10 +40,8 @@ In this lesson we started to learn about the user interface. We started using an
 
 From this class we started to go in depth with the QT designer. We added more codes, to create the full application. One thing I missed was the button in the application. Because I didn't have the button in the window, I couldn't have the application as exact as the one demonstrated, although I feel like I got the concept, and I understood what was happening in the code. During the class I had one error I couldn't figure out, and I asked for hekp from the teacher, although it took us a while to see what the error was. It was the syntax error, more specifically, the wrong letter case. These are very hard to capture, because it is a very small mistake, although this one small mistake can crash the code. After learning how to create the user interface, I now need to create the actual one for my inventory list.
 
-### Class 11 (2020/03/09)
+### Class 11 (2020/03/09) & Class 12 (2020/03/11)
 
-In this class we continued to develop our software design. 
-
-### Class 12 (2020/03/11)
+In this class we continued to develop our software design. We learned how to link two different pages together. We also learned how to show the registration page before the main page. In this lesson we kept asking questions about our app development. In this lesson, I had some time to clarify the things I were confused or didn't know how to, so my app development became a little more smoother. I need to update my design and development part of my repository.
 
 
