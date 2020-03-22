@@ -38,6 +38,6 @@ Design
 ====
 
 ### Sketch of the app 
-[]
+![Appsketch](appsketch.jpg)
 
 
