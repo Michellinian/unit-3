@@ -51,6 +51,51 @@ In the login window there are boxes that requires the user to type in their pass
 Development
 ====
 
+### Registration
+
+First of all this is what the login/signup pages look like.
+![loginpage](Appendix/login.png)
+![signuppage](Appendix/signup.png)
+
+For the sign up page, there are four input boxes for the user. The user has to enter ther email address, username, password, and same password for confirmation. In this sign up page these are the requirements:
+1. Users are able to type in the line edits
+2. WHen sign up button is pressed it should show if the information typed in are valid or not
+For criteria number 2, to be more specific, when password typed in is all number or all letters, then the border of the text box should turn red, indicating that the information input by the user is invalid. Same goes for when the password for confirmation does not match the password user typed in the password text box. Also when there are text boxes that are not filled that text box should also turn red.
 
 
+
+Evaluation 
+=== 
+
+All the videos for proof are in the folder testAppendix.
+
+## Testing the buttons 
+
+This test is to evaluate the functionality of the buttons. It tests whether the button redirects the system to the right page, and whether it should perform the correct function. 
+
+### Login Page
+**Login Button**
+
+This button should:
+1. Check if the username is correct 
+2. if the password is correct 
+3. If both information are correct it should go in to the main page (their inventory)
+
+**Signup Button**
+
+This button should take the user to sign up form. 
+
+### Signup Page
+**Signup Button**
+
+This button should:
+1. Check if every detail are valid -> if not the boxes that contains invalid information should turn red
+2. Go back to the login button 
+
+**Login Button**
+
+This button should go back to the login page.
+
+
+### Testing sign up system 
 
