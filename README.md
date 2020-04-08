@@ -62,9 +62,68 @@ For the sign up page, there are four input boxes for the user. The user has to e
 
 For criteria number 2, to be more specific, when password typed in is all number or all letters, then the border of the text box should turn red, indicating that the information input by the user is invalid. Same goes for when the password for confirmation does not match the password user typed in the password text box. Also when there are text boxes that are not filled that text box should also turn red. 
 
-When focusing on the requirements there were many requirements to cover, so I divided the work in to three. I created three different functions that perform the three actions for requirement number 2, and tested each of them if that works correctly. Then after checking that each program is working without malfunction, I decided to merge all the functions into one so that the code can be more efficient with less repitition of the same program.
+When focusing on the requirements there were many requirements to cover, so I divided the work in to three. I created three different functions that perform the three actions for requirement number 2, and tested each of them if that works correctly. Then after checking that each program is working without malfunction, I decided to merge all the functions into one so that the code can be more efficient with less repitition of the same program. 
 
+**Match Password**
 
+This function checks if the two passwords typed in by the user are matching or not. If it matches then it should automatically go inside to the main page, otherwise it should the error by changing the dolor of the border of the box. 
+Here is the code: 
+```
+    def matchPassword(self):
+        password = self.lineEdit_4.text()
+        confirmpass = self.lineEdit_2.text()
+
+        if password != confirmpass:
+            self.lineEdit_4.setStyleSheet("border: 2px solid red")
+            self.lineEdit_2.setStyleSheet("border: 2px solid red")
+            return
+```
+This code is located inside the signUpWindow class, since this is a method only used inside the sign up page. `self.lineEdit_4.text()` refers to the text input in the password box. The variables inside this function stores the user input. Down below in the if statement it is comparing the two inputs made by the users. `setStyleSheet()` is the syntax for using css to change the layout of the page. In this case I set the border color to be red only if the two passwords are not the same, so it indicated the invalid information to the user.
+
+**If Empty**
+
+This function focuses on checking if the user missed out on any information. If it detectd an empty box or boxes without information types in it would automatically indicate the user to type those in. Here is the code:
+```
+    def ifEmpty(self):
+        username = self.lineEdit_3.text()
+        password = self.lineEdit_4.text()
+        confirmpass = self.lineEdit_2.text()
+        email = self.lineEdit_1.text()
+
+        if username == "":
+            self.lineEdit_3.setStyleSheet("border: 2px solid red")
+        else:
+            self.lineEdit_3.setStyleSheet("border: 2px solid blue")
+        if password == "":
+            self.lineEdit_4.setStyleSheet("border: 2px solid red")
+        else:
+            self.lineEdit_4.setStyleSheet("border: 2px solid blue")
+        if confirmpass == "":
+            self.lineEdit_2.setStyleSheet("border: 2px solid red")
+        else:
+            self.lineEdit_2.setStyleSheet("border: 2px solid blue")
+        if email == "":
+            self.lineEdit_1.setStyleSheet("border: 2px solid red")
+        else:
+            self.lineEdit_1.setStyleSheet("border: 2px solid blue")
+```
+This is a code with simple if statements. These if statements detect whether the information contained in the box is null or not. It goes through every text boxes and show the result. 
+
+**Invalid Password**
+
+Finally for this function, it checks the validity of the password. If the password is only numbers or only letters it gives out error. Here is the code for this program:
+```
+    def invalidPass(self):
+        password = self.lineEdit_4.text()
+
+        if password.isdigit() or password.isalpha():
+            self.lineEdit_4.setStyleSheet("border: 2px solid red;")
+            return "invalid input"
+        else:
+            self.lineEdit_4.setStyleSheet("border: 2px solid blue;")
+            return "valid input"
+```
+This is also a simple if statement. If the password is all digit, or if the password is all alpha, meaning letters, then the border of the text box would become red. If the passord is not, and is a mixture of both, then it would show a blue indicating that the password is valid.
 
 Evaluation 
 === 
@@ -99,5 +158,7 @@ This button should:
 This button should go back to the login page.
 
 
-### Testing sign up system 
+## Testing sign up page
+
+
 
