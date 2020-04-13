@@ -192,6 +192,11 @@ The the second method is called "openMain". This function should only be called 
 In the regCheck method, it contains all the three functions, "match pwd", "if emtpy", and "invalid pwd". It does the exact same thing, the difference is that they're all in one. Which is why there are many conditions inside the method. 
 
 
+## Login in 
+
+In the login page, what the user needs to be able to do is to type in their username and password, and if they entered the correct information, then they should be able to go inside the main page. The username and the password should come from the information they entered in the sign up page. Only if the typed in information in the login page, matches with the information that the user typed in for registration previously, then tehy should be able to access their inventory. 
+
+
 
 Evaluation 
 === 
