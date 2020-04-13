@@ -51,7 +51,7 @@ In the login window there are boxes that requires the user to type in their pass
 Development
 ====
 
-### Registration
+## Registration
 
 The preview for the login and sign up page are both inside the Appendix folder. 
 
@@ -124,6 +124,74 @@ Finally for this function, it checks the validity of the password. If the passwo
             return "valid input"
 ```
 This is also a simple if statement. If the password is all digit, or if the password is all alpha, meaning letters, then the border of the text box would become red. If the passord is not, and is a mixture of both, then it would show a blue indicating that the password is valid.
+
+### The entire program for sign up page 
+```
+class signupWindow(signupForm):
+    def __init__(self, parent=None):
+        super(signupWindow, self).__init__(parent)
+        self.setupUi(self)
+
+        self.lineEdit_1.setPlaceholderText("2020.uwc.isak@uwcisak.jp")
+        self.lineEdit_3.setPlaceholderText("uwc isak")
+        self.lineEdit_4.setPlaceholderText("mixture of letters and numbers")
+        self.lineEdit_2.setPlaceholderText("Enter the same password")
+        # pushButton_2 = loginButton
+        # If the user already has an account go back to the login page
+        self.pushButton_2.clicked.connect(self.openlogin)
+        self.pushButton.clicked.connect(self.regCheck)
+
+    def openlogin(self):
+        login = loginWindow(self)
+        login.show()
+
+    def openMain(self):
+        main = mainWindow(self)
+        main.show()
+
+    def regCheck(self):
+        username = self.lineEdit_3.text()
+        password = self.lineEdit_4.text()
+        confirmpass = self.lineEdit_2.text()
+        email = self.lineEdit_1.text()
+
+        # Create list variable
+        passList = []
+
+        if username == "":
+            self.lineEdit_3.setStyleSheet("border: 2px solid red")
+            passList.append("invalid")
+        else:
+            self.lineEdit_3.setStyleSheet("border: 2px solid blue")
+            passList.append("pass")
+        if password == "" or password.isalpha() or password.isdigit():
+            self.lineEdit_4.setStyleSheet("border: 2px solid red")
+            passList.append("invalid")
+        else:
+            self.lineEdit_4.setStyleSheet("border: 2px solid blue")
+            passList.append("pass")
+        if confirmpass == "" or confirmpass.isdigit() or confirmpass.isalpha():
+            self.lineEdit_2.setStyleSheet("border: 2px solid red")
+        else:
+            if confirmpass == password:
+                self.lineEdit_2.setStyleSheet("border: 2px solid blue")
+                passList.append("pass")
+        if email == "":
+            self.lineEdit_1.setStyleSheet("border: 2px solid red")
+        else:
+            self.lineEdit_1.setStyleSheet("border: 2px solid blue")
+            passList.append("pass")
+```
+
+One issue while I was developing this program is that, I couldn't change the name of each text boxes and buttons. I said `setObjectName` and trid to change the names of these, so then it would be much easier. Although I couldn't manage to do this.
+
+In this code, first I have method called "openlogin", which gets called only when the login button in the page is pressed by the user. This button is for the people who already have an account and don't need to create a new one. This operation is controlled by the line `self.pushButton_2.clicked.connect(self.openlogin)`.
+
+The the second method is called "openMain". This function should only be called when the sign up button is pressed, under the circumstance that all the required information by the user is typed correctly, without any errors. This "checking the information" is done by the "regCheck" method. 
+
+In the regCheck method, it contains all the three functions, "match pwd", "if emtpy", and "invalid pwd". It does the exact same thing, the difference is that they're all in one. Which is why there are many conditions inside the method. 
+
+
 
 Evaluation 
 === 
