@@ -1,0 +1,4 @@
+## Answer to the Syllabus question
+
+
+### You have been given 5000 USD to build your dream computer. The only condition is that you cannot buy a prebuilt computer. Describe what parts you would buy, and Explain how they work as a system to create a computer.
