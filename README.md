@@ -237,7 +237,11 @@ Although one problem was that I didn't know how to write a program so that the i
             self.lineEdit_1.setStyleSheet("border: 2px solid blue")
             return True
 ```
-In this program what is different is that I actually divided the functions back into small bits. What I wanted to do was that I wanted to check if all the functions return True or not, and if does then it should open the main page. This is why I seperated all the functions so that it can either return true or nothing for each one. I feel like there is an easier way, for example I use the paramter password in two differnt functions, and I don't know but I feel like there might be a way of not having to repeat the same parameter. Although this is the best I could do. The program works well, and the main page only opens when all of the functions are checked and if all of them return true.
+In this program what is different is that I actually divided the functions back into small bits. What I wanted to do was that I wanted to check if all the functions return True or not, and if does then it should open the main page. This is why I seperated all the functions so that it can either return true or nothing for each one. I feel like there is an easier way, for example I use the paramter password in two differnt functions, and I don't know but I feel like there might be a way of not having to repeat the same parameter. Although this is the best I could do. The program works well, and the main page only opens when all of the functions are checked and if all of them return true. The openMain method contains all the other method and once this openMain is called in the `__init__` it would execute all of the methods and check the registration information. The code for that is this:
+```
+# pushButton = Sign in button
+self.pushButton.clicked.connect(self.openMain)
+```
 
 ## Login in 
 
