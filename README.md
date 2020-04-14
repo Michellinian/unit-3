@@ -191,10 +191,57 @@ The the second method is called "openMain". This function should only be called 
 
 In the regCheck method, it contains all the three functions, "match pwd", "if emtpy", and "invalid pwd". It does the exact same thing, the difference is that they're all in one. Which is why there are many conditions inside the method. 
 
+Although one problem was that I didn't know how to write a program so that the if all the information are correctly typed in then it would automatically go to the main page. So I had to modify some of the code in order to get the functionalit that I was looking for and this is the final code of the sign up page.
+
+```
+    def openlogin(self):
+        login = loginWindow(self)
+        login.show()
+
+    def openMain(self):
+        main = mainWindow(self)
+        email = self.lineEdit_1.text()
+        username = self.lineEdit_3.text()
+        password = self.lineEdit_4.text()
+        confirmpass = self.lineEdit_2.text()
+        if self.checkMail(email) is True and self.checkUsername(username) is True and self.checkPwd(password) is True and self.conPass(password, confirmpass) is True:
+            main.show()
+
+    def checkPwd(self, password):
+
+        if password == "" or password.isalpha() or password.isdigit():
+            self.lineEdit_4.setStyleSheet("border: 2px solid red")
+        else:
+            self.lineEdit_4.setStyleSheet("border: 2px solid blue")
+            return True
+
+    def conPass(self, password, confirmpass):
+        if confirmpass == "" or confirmpass.isdigit() or confirmpass.isalpha():
+            self.lineEdit_2.setStyleSheet("border: 2px solid red")
+        else:
+            if confirmpass == password:
+                self.lineEdit_2.setStyleSheet("border: 2px solid blue")
+                return True
+
+    def checkUsername(self, username):
+        if username == "":
+            self.lineEdit_3.setStyleSheet("border: 2px solid red")
+        else:
+            self.lineEdit_3.setStyleSheet("border: 2px solid blue")
+            return True
+
+    def checkMail(self, email):
+        if email == "":
+            self.lineEdit_1.setStyleSheet("border: 2px solid red")
+        else:
+            self.lineEdit_1.setStyleSheet("border: 2px solid blue")
+            return True
+```
+In this program what is different is that I actually divided the functions back into small bits. What I wanted to do was that I wanted to check if all the functions return True or not, and if does then it should open the main page. This is why I seperated all the functions so that it can either return true or nothing for each one. I feel like there is an easier way, for example I use the paramter password in two differnt functions, and I don't know but I feel like there might be a way of not having to repeat the same parameter. Although this is the best I could do. The program works well, and the main page only opens when all of the functions are checked and if all of them return true.
 
 ## Login in 
 
-In the login page, what the user needs to be able to do is to type in their username and password, and if they entered the correct information, then they should be able to go inside the main page. The username and the password should come from the information they entered in the sign up page. Only if the typed in information in the login page, matches with the information that the user typed in for registration previously, then tehy should be able to access their inventory. 
+In the login page, what the user needs to be able to do is to type in their username and password, and if they entered the correct information, then they should be able to go inside the main page. The username and the password should come from the information they entered in the sign up page. Only if the typed in information in the login page, matches with the information that the user typed in for registration previously, then they should be able to access their inventory. 
 
 
 
