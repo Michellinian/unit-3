@@ -392,7 +392,7 @@ All the videos for proof are in the folder testAppendix.
 
 For registration, what the user should be able to do is to type in their information in the text boxes. Also it should tell the user of the information is valid or not by the color of the boxes. Only when all the information is typed in correctly, then the user can access the main page. 
 For example if the passwords don't match:
-![testReg](Appendix/testingRefFail.png)
+![testReg](Appendix/testingRegFail.png)
 then the outcome is this. 
 Although if all the information were typed in correctly: 
 ![testReg2](Appendix/testingRegSuccess.png)
