@@ -21,6 +21,11 @@ To paraphrase this, my client, Lauricenia will be going back home by plane for t
 The solution is to create an inventory of packing list for my client so that she can keep track on her belongings. This inventory would be devided into categories, such as clothes, books, toiletries, etc. so that it is easier for her to spot ehat things she have in her room at the moment. It would also have subcategories, so for example, under clothes, there might be t-shirts, jackets, pants, etc. so that my client can have a better idea of her belongings. Since it is summer break and it is the longest break of the year, she wants to be precise about what she brings back home, to make sure that she has absolutely evrerything she needs throughout her entire summer. Also the inventory should record the amount of each belonging she has, as well as the total number of belongings per category and the total. Furthermore, weights of each category should be recorded, since she is getting on a plane for her transportation, and there is a limited number of weight per passenger. She needs to make sure that her luggage is not over the limit or else she would have to pay additional fee. Also by making the inventory editable, she can be able to add new categories, name the subcategories differently, update the weight of the belongings as well as the number, and so on. Finally to secure her inventory list, a secure login system will be required so that she is the only one who can check the inventory list. 
 
 ### Success Criteria
+1. Registration can be done 
+2. The user can login whenever they type the correct password and username 
+3. The password is secured (not visible)
+4. Whenever the user types in an incorrect information the boxes should indicate an error
+
 1. seperating her belongings into different categories
 2. category of the belonging is also seperated into different subcategories 
 3. offers spaces for description 
@@ -301,7 +306,7 @@ In this program what is different is that I actually divided the functions back 
             outputFile.write(f"{hashedInfo}\n")
         self.close()
 ```
-First of all what I did in this code is that, I changed the names of the methods, because in the previous code, I focused too much on how to shorten the method names, that it became hard to understand which method does what. Therefore in this new code, I changed the name to something that is a little bit longer, but more explicit. In this way we can tell what method does what immediately. Second, I replaced the variables of the texts. I decided to repeat the variable each time in different methods, because I thought that this is the most simple way, and it is easy to understand. Also for the step that checks if all the methods retur true or not, I put that into a whole new method called checkRegistration whereas initially I had it in the openMain method. This too, is for th reason of making it as simple as possible. I wanted the openMain method to only be dedicated on that one move and nothing else, because it makes things much more easier. Finally for the new method, it's functionality is that, it takes the username as well as the password and it "hashes" them, or in other words, encrypt them and store it in a txt file called output.txt. This becomes very important when the user wants to log into their own account, because the username and the password will be securely stored in the program. In the method it says `hashedInfo = myLib.hashPassword(username + password)`, and this function hashPassword does the encrypting part. This explanation is in the section "Secure Login System".
+First of all what I did in this code is that, I changed the names of the methods, because in the previous code, I focused too much on how to shorten the method names, that it became hard to understand which method does what. Therefore in this new code, I changed the name to something that is a little bit longer, but more explicit. In this way we can tell what method does what immediately. Second, I replaced the variables of the texts. I decided to repeat the variable each time in different methods, because I thought that this is the most simple way, and it is easy to understand. Also for the step that checks if all the methods retur true or not, I put that into a whole new method called checkRegistration whereas initially I had it in the openMain method. This too, is for th reason of making it as simple as possible. I wanted the openMain method to only be dedicated on that one move and nothing else, because it makes things much more easier. Finally for the new method, it's functionality is that, it takes the username as well as the password and it encrypts them and store it in a txt file called output.txt. This becomes very important when the user wants to log into their own account, because the username and the password will be securely stored in the program. In the method it says `hashedInfo = myLib.hashPassword(username + password)`, and this function hashPassword does the encrypting part. This explanation is in the section "Secure Login System".
 
 
 ## Login in 
@@ -369,13 +374,38 @@ def verifyPassword(storedPassword, providedPassword):
     print(pwdhash)
     return pwdhash == storedPassword
 ```
-In the hashPassword function, first of all it creates something called the salt. This is a randomly generated 
+In the hashPassword function, first of all it creates something called the salt. In the line `salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')`, the default size of a hash is 64 bytes, and they are converted into worth 64 bytes of ascii characters. Basically salt is a set of information that randomly generated, just to make the password harder to decode. Then in `hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), salt, 100000)`, it hashes the encoded password using the salt that has been generated, and that information is made to 64 bytes, and that process will be repeated 100000 times, so that it would become more random. Then after that it is encoded 2 bytes hexadecimal string. Thus the return value is the value of the hashed password but with the salt in front of it. This function was called in the signupWindow class' storeSecureInfo method. In this case the parameter was the password that the user typed in to the password text box. And this new value generated through the hashPassword function is stored into a text file so that it can be retrieved and compared in the later process. 
+
+In the verifyPassword function, it almost does the same thing. The password provided by the user in the login page, is taken as the parameter providedPassword, and this is hashed using the exact same process in the previous function. What is different in this function is that this function is to compare the two values: the stored value that was created with the hashPassword, and the hashed provided password. What it does to compare these two values, is first it retrieves the stored password (the function itself doesn't but in the checkLoginInfo method it does), and it checks for the salt. The salt is the first 64 digits, so it neglects all of that and takes the rest of the value which is supposedly the hashed password. If this matches the newly hashed password, then the user will be able to go in their page. This function returns a boolean, and if it is true, then it will go to the main page.
 
 
 Evaluation 
 === 
 
 All the videos for proof are in the folder testAppendix.
+
+## Checking the first four criterias:
+1. Registration can be done 
+2. The user can login whenever they type the correct password and username 
+3. The password is secured (not visible)
+4. Whenever the user types in an incorrect information the boxes should indicate an error
+
+For registration, what the user should be able to do is to type in their information in the text boxes. Also it should tell the user of the information is valid or not by the color of the boxes. Only when all the information is typed in correctly, then the user can access the main page. 
+For example if the passwords don't match:
+![testReg](Appendix/testingRefFail.png)
+then the outcome is this. 
+Although if all the information were typed in correctly: 
+![testReg2](Appendix/testingRegSuccess.png)
+then the outcome would be something like this. Therefore we can say that success criteria 1 and 4 is met.
+
+For the login page, first of all the password should not be visble to prevent people from stealing the users password:
+![securePassword](Appendix/securePassword.png)
+Also when the user types in the correct password and username they should be able to successfully login and access their main page:
+![testLogin1](Appendix/testLoginSuccess.png)
+Otherwise it should not let the user in, and also indicate an error by changing the color of the text box to red.
+![testLogin2](Appendix/testLoginFail.png)
+From these, we can say that criteria 2, 3, and again 4 were met. 
+
 
 ## Testing the buttons 
 
@@ -404,8 +434,13 @@ This button should:
 
 This button should go back to the login page.
 
+## Checking Secure login system 
 
-## Testing sign up page
+This is the test for the password system. If the user types the username and password that has already been registered it should lead them to the main page. 
+![testLogin1](testLoginSuccess.png)
+When the user typed in the correct password which was "arata713"
+
+
 
 
 
