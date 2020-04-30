@@ -191,7 +191,7 @@ The the second method is called "openMain". This function should only be called 
 
 In the regCheck method, it contains all the three functions, "match pwd", "if emtpy", and "invalid pwd". It does the exact same thing, the difference is that they're all in one. Which is why there are many conditions inside the method. 
 
-Although one problem was that I didn't know how to write a program so that the if all the information are correctly typed in then it would automatically go to the main page. So I had to modify some of the code in order to get the functionalit that I was looking for and this is the final code of the sign up page.
+Although one problem was that I didn't know how to write a program so that the if all the information are correctly typed in then it would automatically go to the main page. So I had to modify some of the code in order to get the functionality that I was looking for and this is the new modified code that I came up with:
 
 ```
     def openlogin(self):
@@ -237,13 +237,7 @@ Although one problem was that I didn't know how to write a program so that the i
             self.lineEdit_1.setStyleSheet("border: 2px solid blue")
             return True
 ```
-In this program what is different is that I actually divided the functions back into small bits. What I wanted to do was that I wanted to check if all the functions return True or not, and if does then it should open the main page. This is why I seperated all the functions so that it can either return true or nothing for each one. I feel like there is an easier way, for example I use the paramter password in two differnt functions, and I don't know but I feel like there might be a way of not having to repeat the same parameter. Although this is the best I could do. The program works well, and the main page only opens when all of the functions are checked and if all of them return true. The openMain method contains all the other method and once this openMain is called in the `__init__` it would execute all of the methods and check the registration information. The code for that is this:
-```
-# pushButton = Sign in button
-self.pushButton.clicked.connect(self.openMain)
-```
-
-This was the intial code for the signup page. Although, this code was a little bit unorganized, so I updated the code into something that looks more like this:
+In this program what is different is that I actually divided the functions back into small bits. What I wanted to do was that I wanted to check if all the functions return True or not, and if does then it should open the main page. This is why I seperated all the functions so that it can either return true or nothing for each one. This enabled me to say that if all the test passes, then it can open the main page. This code works completely fine, although I thought that it was hard to read. I tried to repeat the same thing again and again, for example the line `variableName = self.lineEdit_n.text()`. I couldn't figure out how to create a variable in a class that can be used in method within the class, and I did manage to do this by setting a parameter in each function, that has the same name as the variable. Although, this made things rather complicated, and the code is now very hard to read, and unorganized. Thus I decided to reorganize the code again, with the same function but easier to understand and check. Also I added a new method called storeSecureInfo and this allows the user information to be encrypted and stored. The mechanism will be explained below. This is the new and final code:
 ```
     def openlogin(self):
         login = loginWindow(self)
@@ -293,17 +287,89 @@ This was the intial code for the signup page. Although, this code was a little b
             if self.checkPassword() is True:
                 if self.checkConfirmedPassword() is True:
                     self.openMain()
+                    self.storeSecureInfo()
 
     def openMain(self):
         main = mainWindow(self)
         main.show()
+
+    def storeSecureInfo(self):
+        username = self.lineEdit_3.text()
+        password = self.lineEdit_4.text()
+        hashedInfo = myLib.hashPassword(username + password)
+        with open('output.txt','a') as outputFile:
+            outputFile.write(f"{hashedInfo}\n")
+        self.close()
 ```
-These are the new methods that I created inside the signupWindow class. It is basically the same, there are methods to check for each texts, if they are valid for the corresponding information. The checkConfirmedPassword method also check if the two passwords are matching. In the checkRegistration function, it is programmed to run all the methods. For the method that checks the confirmedPassword, it is ran after the checkPassword method is executed. This is because if the test of matching the two passwords are conducted before checking if the password is valid, the checkConfirmedPassword would return True, even if the password entered is invalid. If all of these return True then, it is programmed to open the main window. The command `self.pushButton.clicked.connect(self.checkRegistration)` is put into the __init__ method, and so when the sign up button is pressed it runs the checkRegistration method. The function is exaclty the same thing as the previous code, but with better organization.
+First of all what I did in this code is that, I changed the names of the methods, because in the previous code, I focused too much on how to shorten the method names, that it became hard to understand which method does what. Therefore in this new code, I changed the name to something that is a little bit longer, but more explicit. In this way we can tell what method does what immediately. Second, I replaced the variables of the texts. I decided to repeat the variable each time in different methods, because I thought that this is the most simple way, and it is easy to understand. Also for the step that checks if all the methods retur true or not, I put that into a whole new method called checkRegistration whereas initially I had it in the openMain method. This too, is for th reason of making it as simple as possible. I wanted the openMain method to only be dedicated on that one move and nothing else, because it makes things much more easier. Finally for the new method, it's functionality is that, it takes the username as well as the password and it "hashes" them, or in other words, encrypt them and store it in a txt file called output.txt. This becomes very important when the user wants to log into their own account, because the username and the password will be securely stored in the program. In the method it says `hashedInfo = myLib.hashPassword(username + password)`, and this function hashPassword does the encrypting part. This explanation is in the section "Secure Login System".
+
 
 ## Login in 
 
 In the login page, what the user needs to be able to do is to type in their username and password, and if they entered the correct information, then they should be able to go inside the main page. The username and the password should come from the information they entered in the sign up page. Only if the typed in information in the login page, matches with the information that the user typed in for registration previously, then they should be able to access their inventory. 
+```
+class loginWindow(login):
+    def __init__(self, parent=None):
+        super(loginWindow, self).__init__(parent)
+        self.setupUi(self)
+        self.username.setPlaceholderText("enter username")
+        self.password.setPlaceholderText("enter password")
 
+        # pushButton = signupButton
+        self.pushButton.clicked.connect(self.opensignup)
+        # password -> black dot
+        # self.password.setEchoMode(QLineEdit.Password)
+        self.loginButt.clicked.connect(self.checkLoginInfo)
+
+    def openMain(self):
+        main = mainWindow(self)
+        main.show()
+
+    def opensignup(self):
+        signup = signupWindow(self)
+        signup.show()
+
+    def checkLoginInfo(self):
+        username = self.username.text()
+        password = self.password.text()
+        outputFile = open('output.txt', 'r')
+        count = 0
+        for line in outputFile:
+            count += 1
+            if myLib.verifyPassword(line, username + password) is True:
+                self.username.setStyleSheet('border: 2px solid blue')
+                self.password.setStyleSheet('border: 2px solid blue')
+                # self.close()
+                self.openMain()
+                break
+            else:
+                self.username.setStyleSheet('border: 2px solid red')
+                self.password.setStyleSheet('border: 2px solid red')
+```
+This is the full code for the login page. In this class there are three methods. There is the openMain and openSignup method, which simply opens the main page and the signup page. The third method is called the checkLoginInfo, and this method is the most important one. In this method, it takes the username and password typed in by the user, and basically what it does is that it compares the encrypted version of those two values with the stored value in output.txt. This stored value is the encrypted username and password that was typed in the sign up page. This is where the storeSecureInfo in the signUpWindow class and this method link together. When receiving the stored value from output.txt, it is programmed so that it reads one line each, so that multiple users can use the app. The received information is now compared to the new hashed information. These processes are all done in the verifyPassword function located in myLib, and there will be a brief explanation about this later on. If this function returns true, meaning if the two values, the stored and the provided information, are matching then it opens the main page, and simultaneously close the login page. Otherwise, it would indicate an error by changing the color of thw text box.
+
+
+## Secure Login System 
+This secure login system is to increase the security for the user so that their personal data will not be stolen or seen without permission. There are two main functions that shape up this system:
+```
+import hashlib, binascii, os
+
+def hashPassword(password):
+    salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
+    pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), salt, 100000)
+    pwdhash = binascii.hexlify(pwdhash)
+    return (salt + pwdhash).decode('ascii')
+
+def verifyPassword(storedPassword, providedPassword):
+    salt = storedPassword[:64]
+    storedPassword = storedPassword[64:-1]
+    print(storedPassword)
+    pwdhash = hashlib.pbkdf2_hmac('sha512', providedPassword.encode('utf-8'), salt.encode('ascii'), 100000)
+    pwdhash = binascii.hexlify(pwdhash).decode('ascii')
+    print(pwdhash)
+    return pwdhash == storedPassword
+```
+In the hashPassword function, first of all it creates something called the salt. This is a randomly generated 
 
 
 Evaluation 
