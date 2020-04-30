@@ -393,17 +393,22 @@ All the videos for proof are in the folder testAppendix.
 For registration, what the user should be able to do is to type in their information in the text boxes. Also it should tell the user of the information is valid or not by the color of the boxes. Only when all the information is typed in correctly, then the user can access the main page. 
 For example if the passwords don't match:
 ![testReg](Appendix/testingRegFail.png)
+
 then the outcome is this. 
 Although if all the information were typed in correctly: 
 ![testReg2](Appendix/testingRegSuccess.png)
+
 then the outcome would be something like this. Therefore we can say that success criteria 1 and 4 is met.
 
 For the login page, first of all the password should not be visble to prevent people from stealing the users password:
 ![securePassword](Appendix/securePassword.png)
+
 Also when the user types in the correct password and username they should be able to successfully login and access their main page:
 ![testLogin1](Appendix/testLoginSuccess.png)
+
 Otherwise it should not let the user in, and also indicate an error by changing the color of the text box to red.
 ![testLogin2](Appendix/testLoginFail.png)
+
 From these, we can say that criteria 2, 3, and again 4 were met. 
 
 
