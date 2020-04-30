@@ -243,6 +243,63 @@ In this program what is different is that I actually divided the functions back 
 self.pushButton.clicked.connect(self.openMain)
 ```
 
+This was the intial code for the signup page. Although, this code was a little bit unorganized, so I updated the code into something that looks more like this:
+```
+    def openlogin(self):
+        login = loginWindow(self)
+        login.show()
+
+    def checkUsername(self):
+        username = self.lineEdit_3.text()
+        if username.isalpha() or username != "":
+            self.lineEdit_3.setStyleSheet("border: 2px solid blue")
+            return True
+        self.lineEdit_3.setStyleSheet("border: 2px solid red")
+        return False
+
+    def checkEmail(self):
+        email = self.lineEdit_1.text()
+        if "@" not in email or email.isdigit() or email == "":
+            self.lineEdit_1.setStyleSheet("border: 2px solid red")
+            return False
+        self.lineEdit_1.setStyleSheet("border: 2px solid blue")
+        return True
+
+    def checkPassword(self):
+        password = self.lineEdit_4.text()
+        if password.isalpha() or password.isdigit() or len(password)<6 or password == "":
+            self.lineEdit_4.setStyleSheet("border: 2px solid red")
+            return False
+        self.lineEdit_4.setStyleSheet("border: 2px solid blue")
+        return True
+
+    def checkConfirmedPassword(self):
+        password = self.lineEdit_4.text()
+        confirmedPassword = self.lineEdit_2.text()
+        if password == confirmedPassword and password != "" and confirmedPassword != "":
+            self.lineEdit_4.setStyleSheet("border: 2px solid blue")
+            self.lineEdit_2.setStyleSheet("border: 2px solid blue")
+            return True
+        self.lineEdit_4.setStyleSheet("border: 2px solid red")
+        self.lineEdit_2.setStyleSheet("border: 2px solid red")
+        return False
+
+    def checkRegistration(self):
+        self.checkUsername()
+        self.checkEmail()
+        self.checkPassword()
+        self.checkConfirmedPassword()
+        if self.checkUsername() is True and self.checkEmail() is True:
+            if self.checkPassword() is True:
+                if self.checkConfirmedPassword() is True:
+                    self.openMain()
+
+    def openMain(self):
+        main = mainWindow(self)
+        main.show()
+```
+These are the new methods that I created inside the signupWindow class. It is basically the same, there are methods to check for each texts, if they are valid for the corresponding information. The checkConfirmedPassword method also check if the two passwords are matching. In the checkRegistration function, it is programmed to run all the methods. For the method that checks the confirmedPassword, it is ran after the checkPassword method is executed. This is because if the test of matching the two passwords are conducted before checking if the password is valid, the checkConfirmedPassword would return True, even if the password entered is invalid. If all of these return True then, it is programmed to open the main window. The command `self.pushButton.clicked.connect(self.checkRegistration)` is put into the __init__ method, and so when the sign up button is pressed it runs the checkRegistration method. The function is exaclty the same thing as the previous code, but with better organization.
+
 ## Login in 
 
 In the login page, what the user needs to be able to do is to type in their username and password, and if they entered the correct information, then they should be able to go inside the main page. The username and the password should come from the information they entered in the sign up page. Only if the typed in information in the login page, matches with the information that the user typed in for registration previously, then they should be able to access their inventory. 
