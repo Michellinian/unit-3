@@ -25,15 +25,11 @@ The solution is to create an inventory of packing list for my client so that she
 2. The user can login whenever they type the correct password and username 
 3. The password is secured (not visible)
 4. Whenever the user types in an incorrect information the boxes should indicate an error
-
-1. seperating her belongings into different categories
-2. category of the belonging is also seperated into different subcategories 
-3. offers spaces for description 
-4. shows the total number of objects 
-5. shows the number of objects per category
-6. shows the weight of objects per category 
-7. secure login system is created 
-8. storation of data while not using the app
+5. The table shows the categories and subcategories 
+6. The table also has a space for the item names as wells as their brief descriptions
+7. The table can contain the weights of each subcategories as well as categories
+8. The table can also contain numbers of each item, subcategory and category
+9. The table can be editted and saved
 
 ### Justification of tool 
 This program uses python as a programming language, and the tool used is PyCharm, an IDE specificated for python. IDE makes the development of the program easier than online platform, since it allows us to create multiple folders and files, which makes it easier to keep track of programs, especially when creating less simple programs. Python would be a good programming language when creating programs or softwares, since python has very kind syntaxes, as well as easier way of doing certain algorithm that cannot be done in other programming languages. It is developer-friendly, and therefore the usage of python and PyCharm as the platform for the dvelopment of this particular software.
