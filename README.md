@@ -51,6 +51,11 @@ In the login window there are boxes that requires the user to type in their pass
 
 This is new update of the sketch. I changed the main table, accordingly to my client's needs, so that it can also show the weight and number of each subcategories as well as categories. There is one flaw in the new sketch, and that is that I forgot to draw the "back" button on the secong table, or the bottom one. Since this page appears when the users presses on the subcategories, it should be able to go back to the main page, whenever the user wants to change the subcategory that they are looking at.
 
+### System Diagram
+![systemdiagram](Appendix/systemDiagram.png)
+
+This is the basic overview of what the app is going to function like. The input of the entire system is going to be the keyboard, or the virtual keyboard on smartphones. The output will be shown on the screen of the device. The input information that the users need to enter is different for each page of the app. The basic step of the app, is first the user registers and creates their own account. Then they are able to login to their own account, and access their inventory table. For the table there are two, the one with categories and subcateogries, and the other one contains more specific information within those subcategories. And whenever they are done, they can logout of the app, it will go back to the intial login page. This is the basic function of the app. 
+
 
 ### Flow chart 1
 
