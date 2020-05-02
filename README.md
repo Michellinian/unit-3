@@ -46,7 +46,24 @@ The main window is the table of belongings that are seperated in different categ
 
 In the login window there are boxes that requires the user to type in their password and their username, since the client wanted the inventory to be confidential to other people. Below those, there are two buttons one is login and the other is sign up. When the user already have an account and typed in their login information correctly, then they will be able to jump to the main window. When they don't have an account they would need to sign up and create an account first. The signup form int eh sketch is almost like all the other sign up page. By setting the username, password, and email address the user will be able to login and look for their own inventory. 
 
-### Updates sketch of the app
+### Updated sketch of the app
+![newAppSketch](Appendix/newSketch.png)
+
+This is new update of the sketch. I changed the main table, accordingly to my client's needs, so that it can also show the weight and number of each subcategories as well as categories. There is one flaw in the new sketch, and that is that I forgot to draw the "back" button on the secong table, or the bottom one. Since this page appears when the users presses on the subcategories, it should be able to go back to the main page, whenever the user wants to change the subcategory that they are looking at.
+
+
+### Flow chart 1
+
+This flow chart is for the secure login system. There are two functions that enables the secure login although, for the flow chart it only shows one. This one is the function that stores the hashed passord received in the registration step.
+![Flow1](Appendix/hashPasswordFlow.jpg)
+
+The explanation of what is happening inside the code is explained in the "secure login system" section in the development criteria.
+
+### Flow Chart 2
+
+![Flow2](Appendix/checkLoginFlow.jpg)
+
+Flow chart number 2 is for the login system. The full explanation of this function also locates in the development section, although briefly explaining, this function (or because it is actually located in a class, we should call it a method) will check the previously registered and the newly entered password and username, and if they match it will open the main page, and if not it would show an error by changing the border of text box to red.
 
 ### Test Plan
 
@@ -448,7 +465,7 @@ For the table in the main window, we can see that the first column of the table 
 
 Further evaluation will be done in the bottom section, "Improvements to the app".
 For success criteria number 6, this can also be said that, although it has spaces to put in all those information, it is not shown explicitly which informationgoes to which column. 
-![testsubWindow](Appendix/testItemTable1.png)
+![testsubWindow](Appendix/testItemTable.png)
 
 For success criterias number 7 and 8, the current program is not fulfilling those.
 ![testTable2](Appendix/testInventoryTable2.png)
@@ -467,8 +484,10 @@ In the main page, the layout of the table was so that, the each category has one
 ### 2. Showing invalid information
 In the current app, the text boxes would turn red and indicate that there is an error. It tells the user which box contains the invalid information, although it doesn't show it anymore specifically. The registration system would be better if the user can know what they did wrong about the information ther entered. For example, if the passwords are not matching, to make it obvious the program would maybe have a pop up message, or just showing a message at the bottom of the text box saying "The passwords are not matching." Or in the login page, if the user types in a wrong password, it is hard for themselves to tell that they have got it wrong, because the password is shown in black dots. As of the current program, it would not indicate what exactly is the error, but if it can, and show the message "Your password is incorrect", then the usability of the app will increase. 
 
+### 3. Login information 
+For the login, in the current app, the information that the user is required for logging in is the password and username. To improve the security, I though that it would be better to ask them for the email address and their password, rather than username. This is because username might sometimes be the same for different accounts, and in this program, I haven't installed a program that would prevent one user from using the same username as others, therefore it would be better to ask for email address, since this information is more distinct to an individual.
 
-
+These are only some of the improvements that can be made in the current app. I think these are the main points that can be improved at the moment, since the app is not finished, and there will be many things necessary for improvement, once the main and the sub page is done programming. This is the evalutaion to the furthest point for now.
 
 
 
