@@ -34,7 +34,6 @@ The solution is to create an inventory of packing list for my client so that she
 ### Justification of tool 
 This program uses python as a programming language, and the tool used is PyCharm, an IDE specificated for python. IDE makes the development of the program easier than online platform, since it allows us to create multiple folders and files, which makes it easier to keep track of programs, especially when creating less simple programs. Python would be a good programming language when creating programs or softwares, since python has very kind syntaxes, as well as easier way of doing certain algorithm that cannot be done in other programming languages. It is developer-friendly, and therefore the usage of python and PyCharm as the platform for the dvelopment of this particular software.
 
-
 Design
 ====
 
@@ -48,6 +47,20 @@ The main window is the table of belongings that are seperated in different categ
 In the login window there are boxes that requires the user to type in their password and their username, since the client wanted the inventory to be confidential to other people. Below those, there are two buttons one is login and the other is sign up. When the user already have an account and typed in their login information correctly, then they will be able to jump to the main window. When they don't have an account they would need to sign up and create an account first. The signup form int eh sketch is almost like all the other sign up page. By setting the username, password, and email address the user will be able to login and look for their own inventory. 
 
 ### Updates sketch of the app
+
+### Test Plan
+
+| | Check |
+| ---- | --- |
+| Registration can be done | YES |
+| The user can login whenever they type the correct password and username | YES |
+| The password is secured (not visible) | YES |
+| Whenever the user types in an incorrect information the boxes should indicate an error | YES |
+| The table shows the categories and subcategories | YES |
+| The table also has a space for the item names as wells as their brief descriptions | YES |
+| The table can contain the weights of each subcategories as well as categories | NO |
+| The table can also contain numbers of each item, subcategory and category | NO |
+| The table can be editted and saved | NO |
 
 Development
 ====
@@ -374,13 +387,35 @@ In the hashPassword function, first of all it creates something called the salt.
 
 In the verifyPassword function, it almost does the same thing. The password provided by the user in the login page, is taken as the parameter providedPassword, and this is hashed using the exact same process in the previous function. What is different in this function is that this function is to compare the two values: the stored value that was created with the hashPassword, and the hashed provided password. What it does to compare these two values, is first it retrieves the stored password (the function itself doesn't but in the checkLoginInfo method it does), and it checks for the salt. The salt is the first 64 digits, so it neglects all of that and takes the rest of the value which is supposedly the hashed password. If this matches the newly hashed password, then the user will be able to go in their page. This function returns a boolean, and if it is true, then it will go to the main page.
 
+## Creating editable inventory table
+I have two tables in the program: one keeps track of the categories and subcategories, as well as there total weight and number of items, while the other table keeps track of all the specifc item names, descriptions and number of thise items. For the later table, I started to develop a system where the user can make changes to the table, and save them so that once they go log out, the new information is still preserved. This is the code that is in progress:
+```
+    def changeDB(self):
+        item = self.itemTable.currentItem()
+        row = self.itemTable.currentRow()
+        col = self.itemTable.currentColumn()
+        # Change the color of the cell clicked
+        self.itemTable.item(row, col).setBackground(QtGui.QColor(100, 100, 150))
+        # show the item in the terminal for debugging purposes
+        print(item.text())
+        self.saveButt.setDisabled(False)
+        self.revertButt.setDisabled(False)
+
+    def save(self):
+        print("Save to CSV File")
+
+    def cancel(self):
+        print("Reload the table")
+```
+This is located in the subWindow class. In the first five line of the code inside the method, it detects which cell the suer selected, and where ever the cell is clicked, that cell will change it's color indicating that changes have been made. There are two buttons "save changes", and "revert changes" buttons that do different jobs, For save changes button, it preserves tha change that the user made, whil on the other hand revert button is used to refresh the table and discard all new changes. This part of the program has not yet been coded yet, although to give an idea of what is is going to do, inside the save and cancel methods, there is a single line indicating their actions.
+
 
 Evaluation 
 === 
 
 All the videos for proof are in the folder testAppendix.
 
-## Checking the first four criterias:
+## Success Criterias 1, 2, 3, 4:
 1. Registration can be done 
 2. The user can login whenever they type the correct password and username 
 3. The password is secured (not visible)
@@ -407,39 +442,31 @@ Otherwise it should not let the user in, and also indicate an error by changing 
 
 From these, we can say that criteria 2, 3, and again 4 were met. 
 
+## Success Criteria 5, 6, 7, 8, 9:
+For the table in the main window, we can see that the first column of the table is more of an abstract or broad terms, and for the rest of the columns they are more specific. It is not explicit enough to tell which is the category and the subcategory, although it does have a space to type in all of those information. 
+![testTable1](Appendix/testInventoryTable1.png)
 
-## Testing the buttons 
+Further evaluation will be done in the bottom section, "Improvements to the app".
+For success criteria number 6, this can also be said that, although it has spaces to put in all those information, it is not shown explicitly which informationgoes to which column. 
+![testsubWindow](Appendix/testItemTable1.png)
 
-This test is to evaluate the functionality of the buttons. It tests whether the button redirects the system to the right page, and whether it should perform the correct function. 
+For success criterias number 7 and 8, the current program is not fulfilling those.
+![testTable2](Appendix/testInventoryTable2.png)
 
-### Login Page
-**Login Button**
+As such in the photo, it would not be possible to enter the information for both the categories and subcategories simultaneously, because they are all in the same row. This means that the layout of the table needs change, to fulfill the success criteria as well as the users needs.
 
-This button should:
-1. Check if the username is correct 
-2. if the password is correct 
-3. If both information are correct it should go in to the main page (their inventory)
+Finally for the last criteria, "the table can be edited and the changes can be saved", this is also a fail. In the current program there is a "save change" button, although it is still under development, and as of now the changes bade in the table cannot be preserved. 
 
-**Signup Button**
 
-This button should take the user to sign up form. 
+## Improvements to the app
+For this app, there are many improvements that can be made. 
 
-### Signup Page
-**Signup Button**
+### 1. Inventory table 
+In the main page, the layout of the table was so that, the each category has one row, and all the subcategories of that category is located in the same row. Therefor when, for example looking at success criteria 7, I was not able to add both, the information of weight of the category and subcategory. If I could find out how to create a column inside a column, just like in the initial sketch, then it would look more organized. In addition to the layout of the table, if the users were able to add buttons of subcategories, and if the buttons can lead to a new fresh table, then it would be more useful. 
 
-This button should:
-1. Check if every detail are valid -> if not the boxes that contains invalid information should turn red
-2. Go back to the login button 
+### 2. Showing invalid information
+In the current app, the text boxes would turn red and indicate that there is an error. It tells the user which box contains the invalid information, although it doesn't show it anymore specifically. The registration system would be better if the user can know what they did wrong about the information ther entered. For example, if the passwords are not matching, to make it obvious the program would maybe have a pop up message, or just showing a message at the bottom of the text box saying "The passwords are not matching." Or in the login page, if the user types in a wrong password, it is hard for themselves to tell that they have got it wrong, because the password is shown in black dots. As of the current program, it would not indicate what exactly is the error, but if it can, and show the message "Your password is incorrect", then the usability of the app will increase. 
 
-**Login Button**
-
-This button should go back to the login page.
-
-## Checking Secure login system 
-
-This is the test for the password system. If the user types the username and password that has already been registered it should lead them to the main page. 
-![testLogin1](testLoginSuccess.png)
-When the user typed in the correct password which was "arata713"
 
 
 
